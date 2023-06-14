@@ -1,5 +1,6 @@
 <form action="https://docs.google.com/forms/d/e/1FAIpQLScu4lbZomP1El6le0Eu9N1raz7R3Nln-l212HRCUjq4ltnbfQ/formResponse" target="hidden_iframe" method="post" onsubmit="return test(this.wcheck.value)">
     <p><input name="entry.2092854676" placeholder="名前" value="名無し" required></p>
+    <p><input name="entry.123456789" placeholder="メールアドレス" type="email"></p>
     <p><textarea name="entry.978343398" placeholder="コメント" rows="10" cols="40" maxlength="400" id="wcheck" required></textarea></p>
     <input type="submit" id="submitbutton" value="送信">
     </form>
@@ -25,13 +26,13 @@
         return submitted=!0;
     }
     </script>
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <div id="comments"></div>
 <script>
 d3.csv("https://docs.google.com/spreadsheets/d/1hDihUKU0HecvSXdPYfUNs5iW8j5o8X0mfsg7Alj5yAo/export?format=csv&range=A3:D", function(error, data){
 	var text = "";
 	for(var i=0; i<data.length; i++){
-		text += i+1 + " 名前: <a href=\"mailto:" + "\">" + data[i].Name + "</a> " + data[i].Timestamp + "<pre>" + data[i].Comments + "</pre>";
+		text += i+1 + " 名前: <a href=\"mailto:" + data[i].Mail + "\">" + data[i].Name + "</a> " + data[i].Timestamp + "<pre>" + data[i].Comments + "</pre>";
 	}
 	d3.select("#comments").html(text);
 });
